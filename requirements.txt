@@ -1,0 +1,7 @@
+yfinance
+fredapi
+pandas
+numpy
+requests
+plotly
+beautifulsoup4
