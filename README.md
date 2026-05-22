@@ -221,8 +221,3 @@ smtplib         Automated email alerts
 GitHub Actions  Cloud scheduling (8am EST daily)
 Google Colab    Development and backtesting
 
----
-
-## Disclaimer
-
-This project is for educational purposes only and does not constitute financial advice.
