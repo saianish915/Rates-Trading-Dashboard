@@ -20,12 +20,18 @@ def get_treasury_yields():
     url_30 = f"https://api.stlouisfed.org/fred/series/observations?series_id=DGS30&api_key={FRED_API_KEY}&file_type=json&observation_start={TWO_YEARS_AGO}"
     url_10 = f"https://api.stlouisfed.org/fred/series/observations?series_id=DGS10&api_key={FRED_API_KEY}&file_type=json&observation_start={TWO_YEARS_AGO}"
 
-    df_30 = pd.DataFrame(requests.get(url_30).json()['observations'])
+    response_30 = requests.get(url_30).json()
+    if 'observations' not in response_30:
+        raise ValueError(f"FRED API error for 30yr: {response_30}")
+    df_30 = pd.DataFrame(response_30['observations'])
     df_30 = df_30[df_30['value'] != '.']
     df_30['value'] = df_30['value'].astype(float)
     df_30['date']  = pd.to_datetime(df_30['date'])
 
-    df_10 = pd.DataFrame(requests.get(url_10).json()['observations'])
+    response_10 = requests.get(url_10).json()
+    if 'observations' not in response_10:
+        raise ValueError(f"FRED API error for 10yr: {response_10}")
+    df_10 = pd.DataFrame(response_10['observations'])
     df_10 = df_10[df_10['value'] != '.']
     df_10['value'] = df_10['value'].astype(float)
     df_10['date']  = pd.to_datetime(df_10['date'])
@@ -65,7 +71,10 @@ def get_cpi_data():
 def get_jobs_data():
     url = f"https://api.stlouisfed.org/fred/series/observations?series_id=PAYEMS&api_key={FRED_API_KEY}&file_type=json&observation_start={TWO_YEARS_AGO}"
 
-    df = pd.DataFrame(requests.get(url).json()['observations'])
+    response = requests.get(url).json()
+    if 'observations' not in response:
+        raise ValueError(f"FRED API error for jobs: {response}")
+    df = pd.DataFrame(response['observations'])
     df = df[df['value'] != '.']
     df['value'] = df['value'].astype(float)
     df['date']  = pd.to_datetime(df['date'])
