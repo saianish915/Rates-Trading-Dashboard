@@ -40,8 +40,14 @@ def get_treasury_yields():
 
 def get_cpi_data():
     url = f"https://api.stlouisfed.org/fred/series/observations?series_id=CPIAUCSL&api_key={FRED_API_KEY}&file_type=json&observation_start={THREE_YEARS_AGO}"
+    
+    response = requests.get(url).json()
 
-    df = pd.DataFrame(requests.get(url).json()['observations'])
+    if 'observations' not in response:
+        print(f"FRED API error: {response}")
+        raise ValueError(f"FRED API did not return observations. Response: {response}")
+    
+    df = pd.DataFrame(response['observations'])
     df = df[df['value'] != '.']
     df['value'] = df['value'].astype(float)
     df['date']  = pd.to_datetime(df['date'])
