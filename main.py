@@ -7,6 +7,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime, timedelta
+import time
 
 FRED_API_KEY    = os.environ['FRED_API_KEY']
 EMAIL_ADDRESS   = os.environ['EMAIL_ADDRESS']
@@ -27,6 +28,8 @@ def get_treasury_yields():
     df_30 = df_30[df_30['value'] != '.']
     df_30['value'] = df_30['value'].astype(float)
     df_30['date']  = pd.to_datetime(df_30['date'])
+
+    time.sleep(1)  
 
     response_10 = requests.get(url_10).json()
     if 'observations' not in response_10:
@@ -249,9 +252,13 @@ def main():
     print(f"RATES DASHBOARD - {datetime.today().strftime('%B %d, %Y %H:%M')}")
     print("=" * 45)
 
+    
     latest_30, latest_10     = get_treasury_yields()
+    time.sleep(2)
     latest_cpi, prev_cpi     = get_cpi_data()
+    time.sleep(2)
     latest_jobs              = get_jobs_data()
+    time.sleep(2)
     latest_brent, latest_wti = get_oil_prices()
     latest_tlt               = get_tlt_price()
 
