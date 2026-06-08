@@ -184,6 +184,42 @@ The base strategy was the best performing version across all metrics.
 
 ---
 
+## Backtest Limitations and Statistical Credibility
+
+The 38% excess return over 2020-2026 requires important context:
+
+1. The window is historically anomalous
+The backtest period contains three back-to-back
+extreme regimes: the COVID crash, the zero-rate era,
+and the most aggressive Fed tightening cycle in 40 years.
+The excess return is driven primarily by avoiding bonds
+during the 2022 tightening cycle when buy and hold lost 34%.
+Whether this generalizes to future cycles is untested.
+
+2. Only 8 trades over 6 years
+With only 8 trades the Sharpe ratio of 0.15 and win rate
+of 50% are not statistically significant. A minimum of
+30 trades is typically required for meaningful strategy
+evaluation. The signal is too infrequent to draw strong
+conclusions from win rate alone.
+
+3. Single regime test
+The strategy has only been tested through one full
+tightening cycle. A more robust test would require
+data from the 1970s and 1980s tightening cycles.
+
+4. No transaction costs modeled
+Real bond trading involves bid-ask spreads and
+duration risk that would reduce the excess return
+in practice.
+
+5. Walk forward test would strengthen credibility
+Training on 2020-2022 and testing on 2023-2026
+separately would provide a cleaner out-of-sample
+validation within the available data.
+
+---
+
 ## Conclusion and Takeaways
 
 1. The hypothesis was partially supported
