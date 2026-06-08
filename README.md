@@ -224,21 +224,26 @@ validation within the available data.
 
 1. The hypothesis was partially supported
 
+
 A rules-based macro signal system can outperform buy and hold significantly over a period that includes a major rate hiking cycle. The 38% excess return over six years demonstrates that systematic indicator-based timing adds value versus passive exposure.
 
 2. Complexity destroyed alpha
+
 
 The most important finding was that adding sophistication to the strategy consistently made it worse. The trend filter blocked entries during the precise windows when the signal was correct. The tight stop loss caused premature exits before positions recovered. This reflects a well-documented phenomenon in macro trading: over-fitting and over-engineering reduces robustness.
 
 3. Oil is the key variable in the current environment
 
+
 Of the five indicators, oil had the most asymmetric impact on the current signal. With Brent above $100 driven by the Iran war, the oil score alone was enough to suppress a BUY signal even when other indicators were favorable. A resolution to the Middle East conflict would likely flip the overall signal from WAIT to BUY within a single monthly rebalancing cycle.
 
 4. The Sharpe ratio remains low
 
+
 A Sharpe ratio of 0.15 indicates the strategy is not yet risk-adjusted efficient. With only 8 trades over 6 years, there is insufficient trade frequency to build a smooth return profile. Future work would explore increasing signal sensitivity or applying the framework to additional fixed income instruments to increase trade frequency.
 
 5. Limitations
+
 
 - Backtest covers only one full rate hiking cycle (2022-2023)
 - Monthly rebalancing misses intra-month opportunities
